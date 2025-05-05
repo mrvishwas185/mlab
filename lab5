@@ -1,0 +1,15 @@
+import numpy as np 
+from sklearn.neighbors import KNeighborsClassifier 
+# Generate 100 random values in range [0,1] 
+data = np.random.rand(100).reshape(-1, 1) 
+# Label first 50 points based on the given condition 
+labels = np.array(["Class1" if x <= 0.5 else "Class2" for x in data[:50]]) 
+# Split data into training (first 50) and testing (remaining 50) train_data, train_labels = data[:50], labels 
+test_data = data[50:] 
+#Apply k-NN for given k values 
+k_values = [1, 2, 3, 4, 5, 20, 30] 
+for k in k_values: 
+knn = KNeighborsClassifier(n_neighbors=k) 
+knn,fit(train_data, train_labels) 
+predictions = knn,predict(test_data) 
+print(f"Results for k={k}:") print(predictions, "\n")
