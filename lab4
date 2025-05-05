@@ -1,37 +1,24 @@
-import pandas as pddef find_s_algorithm(file_path):
-data = pd.read_csv(file_path)print("Training data:")
-print(data)attributes = data.columns[:-1]
-class_label = data.columns[-1]hypothesis = ['?' for _ in attributes]for index, row in data.iterrows():
-if row[class_label] == 'Yes':
-for i, value in enumerate(row[attributes]):
-if hypothesis[i] == '?' or hypothesis[i] == value:
-hypothesis[i] = value
-else:
-hypothesis[i] = '?'return hypothesisfile_path = 'training_data.csv'
+import pandas as pd
+
+def find_s_algorithm(file_path):
+    data = pd.read_csv(file_path)
+    print("Training data:")
+    print(data)
+
+    attributes = data.columns[:-1]
+    class_label = data.columns[-1]
+    hypothesis = ['?' for _ in attributes]
+
+    for index, row in data.iterrows():
+        if row[class_label] == 'Yes':
+            for i, value in enumerate(row[attributes]):
+                if hypothesis[i] == '?' or hypothesis[i] == value:
+                    hypothesis[i] = value
+                else:
+                    hypothesis[i] = '?'
+
+    return hypothesis
+
+file_path = 'training_data.csv'
 hypothesis = find_s_algorithm(file_path)
 print("\nThe final hypothesis is:", hypothesis)
-
-
-
-
-import pandas as pd 
-import numpy as np 
-data = pd.read_csv('/content/enjoysport.csv') 
-np.array(data) [:,:-1] 
-attribute = target = np.array(data)[:,-1] 
-print("Training data:") 
-print(data) 
-def train(att,tar): 
-for i, val in enumerate(tar): 
-if val=='yes': 
-specific_h=att[i].copy() 
-break 
-for i, val in enumerate(att): 
-if tar[i]=='yes': 
-for x in range(len(specific_h)): 
-if val[x]!=specific_h[x]: 
-specific_h[x]='?' 
-else: 
-pass 
-return specific_h 
-print(train(attribute, target))
