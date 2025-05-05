@@ -10,3 +10,28 @@ else:
 hypothesis[i] = '?'return hypothesisfile_path = 'training_data.csv'
 hypothesis = find_s_algorithm(file_path)
 print("\nThe final hypothesis is:", hypothesis)
+
+
+
+
+import pandas as pd 
+import numpy as np 
+data = pd.read_csv('/content/enjoysport.csv') 
+np.array(data) [:,:-1] 
+attribute = target = np.array(data)[:,-1] 
+print("Training data:") 
+print(data) 
+def train(att,tar): 
+for i, val in enumerate(tar): 
+if val=='yes': 
+specific_h=att[i].copy() 
+break 
+for i, val in enumerate(att): 
+if tar[i]=='yes': 
+for x in range(len(specific_h)): 
+if val[x]!=specific_h[x]: 
+specific_h[x]='?' 
+else: 
+pass 
+return specific_h 
+print(train(attribute, target))
